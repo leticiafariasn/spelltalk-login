@@ -498,6 +498,23 @@
       width: 33%;
     }
     
+    /* Estilo para o copyright */
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 300;
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+    }
+    
+    .copyright-symbol {
+      font-size: 0.85rem;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+    
     @media (max-width: 640px) {
       .login-card {
         padding: 2rem 1.5rem;
@@ -525,6 +542,10 @@
       
       .login-title {
         font-size: 2rem;
+      }
+      
+      .copyright {
+        font-size: 0.7rem;
       }
     }
   </style>
@@ -573,7 +594,7 @@
           <i class="ph ph-lock input-icon"></i>
         </div>
         
-        <!-- Opção "Lembrar-me" CORRIGIDA -->
+        <!-- Opção "Lembrar-me" -->
         <label class="remember-me-container">
           <input type="checkbox" id="remember-me" class="remember-checkbox">
           <span class="checkbox-custom"></span>
@@ -583,6 +604,11 @@
         <button type="submit" class="login-btn">Entrar</button>
         
         <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        
+        <!-- Copyright -->
+        <div class="copyright">
+          <span class="copyright-symbol">©</span> 2025 SpellTalk. Todos os direitos reservados.
+        </div>
       </form>
     </div>
   </div>
