@@ -349,24 +349,23 @@
       opacity: 0.7;
     }
     
-    /* Estilo para o checkbox "Lembrar-me" */
+    /* Estilo para o checkbox "Lembrar-me" - CORRIGIDO */
     .remember-me-container {
       display: flex;
       align-items: center;
       margin-bottom: 1.5rem;
       position: relative;
+      cursor: pointer;
     }
     
     .remember-checkbox {
       position: absolute;
       opacity: 0;
-      cursor: pointer;
       height: 0;
       width: 0;
     }
     
     .checkbox-custom {
-      position: relative;
       display: inline-block;
       width: 18px;
       height: 18px;
@@ -374,12 +373,11 @@
       border: 2px solid var(--border-color);
       border-radius: 4px;
       margin-right: 10px;
-      cursor: pointer;
       transition: all 0.2s ease;
-      flex-shrink: 0;
+      position: relative;
     }
     
-    .remember-checkbox:checked ~ .checkbox-custom {
+    .remember-checkbox:checked + .checkbox-custom {
       background-color: var(--primary);
       border-color: var(--primary);
     }
@@ -397,7 +395,7 @@
       transform: rotate(45deg);
     }
     
-    .remember-checkbox:checked ~ .checkbox-custom:after {
+    .remember-checkbox:checked + .checkbox-custom:after {
       display: block;
     }
     
@@ -575,12 +573,12 @@
           <i class="ph ph-lock input-icon"></i>
         </div>
         
-        <!-- Opção "Lembrar-me" -->
-        <div class="remember-me-container">
+        <!-- Opção "Lembrar-me" CORRIGIDA -->
+        <label class="remember-me-container">
           <input type="checkbox" id="remember-me" class="remember-checkbox">
           <span class="checkbox-custom"></span>
-          <label for="remember-me" class="remember-label">Lembrar-me</label>
-        </div>
+          <span class="remember-label">Lembrar-me</span>
+        </label>
         
         <button type="submit" class="login-btn">Entrar</button>
         
