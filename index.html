@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpellTalk - Login</title>
   
+  <!-- Favicon - Solução completa para todos os navegadores -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#9d4edd">
+  <meta name="msapplication-TileColor" content="#9d4edd">
+  <meta name="theme-color" content="#9d4edd">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +29,11 @@
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
   
   <style>
+    /* Adicionando overflow: hidden para html e body */
+    html, body {
+      overflow: hidden;
+    }
+    
     :root {
       --primary: #9d4edd;
       --primary-focus: #8a2be2;
@@ -177,17 +191,18 @@
     .symbol-4 { bottom: 30%; right: 15%; font-size: 7rem; transform: rotate(-10deg); }
     .symbol-5 { top: 50%; left: 20%; font-size: 3.5rem; transform: rotate(-5deg); }
     
-    .purple-glow {
+    /* Brilho preto no fundo */
+    .black-glow {
       position: absolute;
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, rgba(157, 78, 221, 0) 70%);
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
       transition: opacity 0.3s ease;
     }
     
-    html:not(.dark) .purple-glow {
-      opacity: 0.5;
+    html:not(.dark) .black-glow {
+      opacity: 0.3;
     }
     
     .glow-1 { top: -100px; right: -100px; }
@@ -219,7 +234,7 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 
                   0 0 0 1px rgba(255, 255, 255, 0.05),
-                  0 0 20px rgba(181, 124, 227, 0.201);
+                  0 0 20px rgba(0, 0, 0, 0.3);
     }
     
     .login-card:hover {
@@ -229,13 +244,13 @@
     html.dark .login-card:hover {
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
                   0 0 0 1px rgba(255, 255, 255, 0.07),
-                  0 0 40px rgba(157, 78, 221, 0.3);
+                  0 0 40px rgba(0, 0, 0, 0.4);
     }
     
     html:not(.dark) .login-card:hover {
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 
                   0 0 0 1px rgba(0, 0, 0, 0.08),
-                  0 0 20px rgba(157, 78, 221, 0.15);
+                  0 0 20px rgba(0, 0, 0, 0.2);
     }
     
     .login-title {
@@ -252,6 +267,18 @@
       letter-spacing: 0.5px;
     }
     
+    .login-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
     
     .input-group {
       position: relative;
@@ -337,7 +364,7 @@
       opacity: 0.7;
     }
     
-    /* Estilo para o checkbox "Lembrar-me" - CORRIGIDO */
+    /* Estilo para o checkbox "Lembrar-me" */
     .remember-me-container {
       display: flex;
       align-items: center;
@@ -454,10 +481,11 @@
       transform: translateY(0);
     }
     
-    .forgot-password {
+    /* Estilo padronizado para links */
+    .text-link {
       display: block;
       text-align: center;
-      margin-top: 1.5rem;
+      margin-bottom: 1rem;
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.875rem;
@@ -466,30 +494,41 @@
       font-weight: 400;
     }
     
-    .forgot-password:after {
+    .text-link:first-of-type {
+      margin-top: 1.5rem;
+    }
+    
+    .text-link span {
+      color: var(--primary);
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .text-link span:after {
       content: '';
       position: absolute;
       width: 0;
       height: 1px;
-      bottom: -2px;
-      left: 50%;
-      background-color: var(--primary-light);
+      bottom: -1px;
+      left: 0;
+      background-color: var(--primary);
       transition: all 0.3s ease;
-      transform: translateX(-50%);
     }
     
-    .forgot-password:hover {
+    .text-link:hover span {
       color: var(--primary-light);
     }
     
-    .forgot-password:hover:after {
-      width: 33%;
+    .text-link:hover span:after {
+      width: 100%;
     }
     
     /* Estilo para o copyright */
     .copyright {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 0.5rem;
       color: var(--text-secondary);
       font-size: 0.75rem;
       font-weight: 300;
@@ -557,8 +596,8 @@
   
   <!-- Background Elements -->
   <div class="bg-elements">
-    <div class="purple-glow glow-1"></div>
-    <div class="purple-glow glow-2"></div>
+    <div class="black-glow glow-1"></div>
+    <div class="black-glow glow-2"></div>
     
     <div class="language-symbol symbol-1">Ñ</div>
     <div class="language-symbol symbol-2">Ç</div>
@@ -591,7 +630,15 @@
         
         <button type="submit" class="login-btn">Entrar</button>
         
-        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        <!-- Link "Esqueceu a senha?" com estilo padronizado -->
+        <a href="#" class="text-link">
+          <span>Esqueceu a senha?</span>
+        </a>
+        
+        <!-- Link de Cadastro com estilo padronizado -->
+        <a href="#" class="text-link">
+          Ainda não possui conta? <span>Cadastre-se</span>
+        </a>
         
         <!-- Copyright -->
         <div class="copyright">
